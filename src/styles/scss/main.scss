@@ -1,0 +1,163 @@
+// Tailwind CSS directives
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Import other SCSS partial files
+// Note: _variables.scss is automatically imported via Vite config
+
+// Base styles
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-primary-dark text-text-primary;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(
+          circle at 10% 10%,
+          rgba($purple, 0.05) 0%,
+          transparent 30%
+        ),
+        radial-gradient(circle at 90% 90%, rgba($red, 0.05) 0%, transparent 30%),
+        radial-gradient(
+          circle at 50% 50%,
+          rgba($blue, 0.03) 0%,
+          transparent 50%
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+
+  // Improved focus outline for accessibility
+  *:focus-visible {
+    @apply outline-none ring-2 ring-secondary ring-offset-1 ring-offset-black;
+  }
+}
+
+// Component styles
+@layer components {
+  // Section containers
+  .section {
+    @apply min-h-screen py-20 relative overflow-hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 30px 30px;
+      background-image: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px
+        );
+      z-index: -1;
+      opacity: 0.4;
+    }
+  }
+
+  // Custom button styles
+  .btn {
+    @apply px-6 py-3 rounded-md font-medium transition-all duration-300 inline-flex items-center justify-center;
+
+    &-primary {
+      @apply bg-secondary hover:bg-secondary-dark text-white shadow-lg hover:shadow-glow-purple;
+    }
+
+    &-outline {
+      @apply bg-transparent border border-white/20 hover:bg-white/5 text-white;
+    }
+  }
+
+  // Card styles
+  .card {
+    @apply bg-primary-light rounded-lg border border-white/10 p-6 transition-all duration-300;
+
+    &:hover {
+      @apply border-white/20 shadow-lg;
+    }
+
+    &-highlight {
+      @apply bg-gradient-to-br from-secondary/10 to-highlight/10 border-secondary/20;
+
+      &:hover {
+        @apply border-secondary/30 shadow-glow-purple;
+      }
+    }
+  }
+}
+
+// Utility styles
+@layer utilities {
+  // Text gradient
+  .text-gradient {
+    @apply bg-clip-text text-transparent inline-block;
+    background-image: linear-gradient(90deg, $purple 0%, $blue 50%, $red 100%);
+  }
+
+  // Glass morphism effect
+  .bg-glass {
+    @apply bg-primary/70 backdrop-blur-lg border border-white/5;
+  }
+
+  // Custom scrollbar
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: $purple $black;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $black;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $purple;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: lighten($purple, 10%);
+      }
+    }
+  }
+
+  // Parallax container
+  .parallax-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform-origin: center center;
+  }
+}
