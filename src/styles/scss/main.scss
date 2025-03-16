@@ -1,10 +1,10 @@
+@use "@styles/scss/_variables.scss" as *;
+@use "sass:color";
+
 // Tailwind CSS directives
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-// Import other SCSS partial files
-// Note: _variables.scss is automatically imported via Vite config
 
 // Base styles
 @layer base {
@@ -139,7 +139,7 @@
       border-radius: 4px;
 
       &:hover {
-        background-color: lighten($purple, 10%);
+        background-color: color.adjust($purple, $lightness: 10%);
       }
     }
   }

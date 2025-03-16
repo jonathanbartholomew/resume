@@ -26,6 +26,8 @@ export default {
           light: "#4299e1",
           dark: "#2b6cb0",
         },
+        "text-primary": "#f7fafc",
+        "text-secondary": "#cbd5e0",
       },
       fontFamily: {
         sans: ["Inter var", "Inter", "sans-serif"],
@@ -53,5 +55,4 @@ export default {
       },
     },
   },
-  plugins: [],
 };

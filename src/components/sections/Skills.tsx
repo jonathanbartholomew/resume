@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import skillsData, { SkillCategory, Skill } from "@/data/skills";
+import skillsData from "@/data/skills";
+import type { Skill } from "@/data/skills";
 
 const Skills = () => {
   const { ref, isVisible } = useIntersectionObserver({

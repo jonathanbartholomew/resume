@@ -2,7 +2,8 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import experienceData, { ExperienceItem } from "@/data/experience";
+import experienceData from "@/data/experience";
+import type { ExperienceItem } from "@/data/experience";
 
 const Experience = () => {
   const { ref, isVisible } = useIntersectionObserver({

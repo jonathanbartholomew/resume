@@ -1,4 +1,3 @@
-// src/hooks/useIntersectionObserver.ts
 import { useEffect, useRef, useState, RefObject } from "react";
 
 interface IntersectionObserverOptions {
@@ -8,15 +7,18 @@ interface IntersectionObserverOptions {
   once?: boolean;
 }
 
+// Changed the interface to accept null in the RefObject type
+interface IntersectionObserverReturn<T extends HTMLElement> {
+  ref: RefObject<T | null>;
+  isVisible: boolean;
+}
+
 function useIntersectionObserver<T extends HTMLElement>({
   threshold = 0.1,
   rootMargin = "0px",
   root = null,
   once = false,
-}: IntersectionObserverOptions = {}): {
-  ref: RefObject<T>;
-  isVisible: boolean;
-} {
+}: IntersectionObserverOptions = {}): IntersectionObserverReturn<T> {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<T>(null);
   const wasSeen = useRef(false); // For the "once" option
